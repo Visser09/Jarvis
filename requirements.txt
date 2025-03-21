@@ -1,0 +1,13 @@
+transformers
+torch
+requests
+numpy
+pandas
+pyttsx3
+pyaudio 
+whisper 
+elevenlabs
+pyautogui
+pytesseract
+pillow
+pygetwindow
