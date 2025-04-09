@@ -5,6 +5,8 @@ import os
 import subprocess
 import platform
 import time
+import winreg
+import win32com.client
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -33,72 +35,101 @@ class DesktopControl:
         logger.info("Initializing Desktop Control...")
         self.system = platform.system()
         logger.info(f"Detected operating system: {self.system}")
-        logger.info("Desktop Control initialization complete.")
+        self.shell = win32com.client.Dispatch("WScript.Shell")
+        self.start_menu_paths = [
+            os.path.expandvars("%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs"),
+            os.path.expandvars("%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs")
+        ]
+        logger.info("Desktop Control initialized")
     
+    def _search_start_menu(self, app_name):
+        """Search for application in Start Menu"""
+        app_name = app_name.lower()
+        for start_menu_path in self.start_menu_paths:
+            for root, dirs, files in os.walk(start_menu_path):
+                for file in files:
+                    if file.endswith('.lnk'):
+                        if app_name in file.lower():
+                            return os.path.join(root, file)
+        return None
+
+    def _search_registry(self, app_name):
+        """Search for application in Windows Registry"""
+        app_name = app_name.lower()
+        try:
+            # Search in HKEY_LOCAL_MACHINE
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths") as key:
+                for i in range(winreg.QueryInfoKey(key)[1]):
+                    try:
+                        subkey_name = winreg.EnumKey(key, i)
+                        if app_name in subkey_name.lower():
+                            with winreg.OpenKey(key, subkey_name) as subkey:
+                                try:
+                                    path = winreg.QueryValue(subkey, None)
+                                    if path and os.path.exists(path):
+                                        return path
+                                except:
+                                    continue
+                    except:
+                        continue
+        except:
+            pass
+        return None
+
+    def _search_common_paths(self, app_name):
+        """Search for application in common installation paths"""
+        app_name = app_name.lower()
+        common_paths = [
+            os.path.expandvars("%ProgramFiles%"),
+            os.path.expandvars("%ProgramFiles(x86)%"),
+            os.path.expandvars("%LocalAppData%"),
+            os.path.expandvars("%AppData%")
+        ]
+        
+        for base_path in common_paths:
+            if not os.path.exists(base_path):
+                continue
+            for root, dirs, files in os.walk(base_path):
+                for file in files:
+                    if file.endswith('.exe') and app_name in file.lower():
+                        return os.path.join(root, file)
+        return None
+
     def open_application(self, app_name):
-        """Open an application by name"""
+        """Open an application using various methods"""
         logger.info(f"Attempting to open application: {app_name}")
         
-        app_name = app_name.lower()
+        # Try different methods to find and open the application
+        methods = [
+            (self._search_start_menu, "Start Menu"),
+            (self._search_registry, "Registry"),
+            (self._search_common_paths, "Common Paths")
+        ]
         
-        # Common applications with their commands for different platforms
-        common_apps = {
-            "chrome": {
-                "Windows": "start chrome",
-                "Darwin": "open -a 'Google Chrome'",
-                "Linux": "google-chrome"
-            },
-            "firefox": {
-                "Windows": "start firefox",
-                "Darwin": "open -a Firefox",
-                "Linux": "firefox"
-            },
-            "notepad": {
-                "Windows": "notepad",
-                "Darwin": "open -a TextEdit",
-                "Linux": "gedit"
-            },
-            "calculator": {
-                "Windows": "calc",
-                "Darwin": "open -a Calculator",
-                "Linux": "gnome-calculator"
-            },
-            "spotify": {
-                "Windows": "start spotify",
-                "Darwin": "open -a Spotify",
-                "Linux": "spotify"
-            },
-            "tradingview": {
-                "Windows": "start https://www.tradingview.com/chart/",
-                "Darwin": "open https://www.tradingview.com/chart/",
-                "Linux": "xdg-open https://www.tradingview.com/chart/"
-            }
-        }
+        for search_method, method_name in methods:
+            try:
+                path = search_method(app_name)
+                if path:
+                    logger.info(f"Found application in {method_name}: {path}")
+                    if path.endswith('.lnk'):
+                        # Handle shortcut
+                        self.shell.Run(path, 1, True)
+                    else:
+                        # Handle executable
+                        subprocess.Popen(path)
+                    return True
+            except Exception as e:
+                logger.error(f"Error in {method_name} search: {str(e)}")
+                continue
         
+        # If no method worked, try using the Windows search
         try:
-            # Check if the app is in our common apps list
-            for common_name, commands in common_apps.items():
-                if common_name in app_name:
-                    if self.system in commands:
-                        command = commands[self.system]
-                        subprocess.Popen(command, shell=True)
-                        logger.info(f"Opened {common_name} using command: {command}")
-                        return True
-            
-            # If not found in common apps, try a direct approach
-            if self.system == "Windows":
-                subprocess.Popen(f"start {app_name}", shell=True)
-            elif self.system == "Darwin":  # macOS
-                subprocess.Popen(f"open -a '{app_name}'", shell=True)
-            elif self.system == "Linux":
-                subprocess.Popen(app_name, shell=True)
-            
-            logger.info(f"Attempted to open {app_name} using generic command")
+            subprocess.Popen(f'explorer shell:AppsFolder\\{app_name}')
             return True
+        except:
+            pass
             
-        except Exception as e:
-            logger.error(f"Error opening application {app_name}: {str(e)}")
-            return False
+        raise Exception(f"Could not find or open application: {app_name}")
     
     def close_application(self, app_name):
         """Close an application by name"""

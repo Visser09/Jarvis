@@ -56,8 +56,8 @@ class AIEngine:
         """Process user input and generate a response using GPT-3.5-turbo"""
         start_time = time.time()
         
-        # Retrieve recent conversation history (last 5 interactions)
-        history = self.memory_manager.get_recent_interactions(5)
+        # Retrieve recent conversation history (last 3 interactions)
+        history = self.memory_manager.get_recent_interactions(3)
         
         # Prepare messages for the ChatCompletion API
         messages = self._prepare_messages(text, history)
@@ -82,13 +82,18 @@ class AIEngine:
             f"You are Jarvis, a friendly, helpful, and professional AI assistant. "
             f"Your tone is {self.personality.get('tone', 'friendly')}, "
             f"and you speak in a {self.personality.get('style', 'concise and engaging')} manner. "
-            f"Always address the user as '{self.personality.get('address_user_as', 'sir')}'."
+            f"Always address the user as '{self.personality.get('address_user_as', 'sir')}'. "
+            f"IMPORTANT: Keep responses extremely short (1-2 words when possible). "
+            f"Only provide longer explanations when explicitly asked. "
+            f"Use simple, clear language. "
+            f"Never repeat yourself unless asked. "
+            f"Maximum response length should be 10 words unless specifically asked for more detail."
         )
         
         messages = [{"role": "system", "content": system_message}]
         
-        # Add conversation history if available
-        for entry in history:
+        # Add only the last 2 interactions to save tokens
+        for entry in history[-2:]:
             role = "user" if entry["speaker"].lower() == "user" else "assistant"
             messages.append({"role": role, "content": entry["text"]})
         
@@ -103,16 +108,17 @@ class AIEngine:
                 model=self.model_name,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=150  # adjust as needed
+                max_tokens=20  # Reduced to encourage shorter responses
             )
             # Extract the assistant's response
             response = completion.choices[0].message["content"].strip()
             return response
         except Exception as e:
             logger.error(f"Error generating response: {str(e)}")
-            return "I apologize, but I'm having trouble processing that request at the moment."
+            return "I apologize, sir."
     
     def fine_tune(self, training_data):
         """Placeholder for fine-tuning functionality (not applicable with OpenAI API)"""
         logger.info("Fine-tuning functionality not implemented for GPT-3.5-turbo.")
         pass
+

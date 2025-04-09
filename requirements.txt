@@ -11,3 +11,9 @@ pyautogui
 pytesseract
 pillow
 pygetwindow
+pvporcupine
+cryptography
+pytest
+pytest-cov
+pytest-mock
+pytest-asyncio

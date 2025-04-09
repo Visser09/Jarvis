@@ -11,7 +11,6 @@ logger = get_logger(__name__)
 # Try to import required libraries
 try:
     import pyautogui
-    import pytesseract
     from PIL import Image
     SCREEN_READER_AVAILABLE = True
 except ImportError:
@@ -28,13 +27,6 @@ class ScreenReader:
         self.monitoring_active = False
         
         if SCREEN_READER_AVAILABLE:
-            # Set Tesseract path if needed (for Windows)
-            if os.name == 'nt':
-                tesseract_path = os.environ.get("TESSERACT_PATH", r"C:\Program Files\Tesseract-OCR\tesseract.exe")
-                if os.path.exists(tesseract_path):
-                    pytesseract.pytesseract.tesseract_cmd = tesseract_path
-                else:
-                    logger.warning(f"Tesseract not found at {tesseract_path}. Set TESSERACT_PATH environment variable.")
             logger.info("Screen Reader initialized.")
         else:
             logger.warning("Screen Reader functionality will be limited.")
@@ -67,11 +59,9 @@ class ScreenReader:
             # Convert screenshot to numpy array
             screenshot_np = np.array(screenshot)
             
-            logger.info("Performing OCR on screenshot...")
-            text = pytesseract.image_to_string(screenshot_np)
+            logger.info("OCR functionality disabled.")
+            return ""
             
-            logger.info(f"OCR completed: {len(text)} characters extracted")
-            return text
         except Exception as e:
             logger.error(f"Error reading text from screen: {str(e)}")
             return ""

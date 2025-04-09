@@ -1,254 +1,254 @@
 {
   "interactions": [
     {
-      "timestamp": "2025-03-19T17:48:56.087197",
-      "speaker": "jarvis",
-      "text": "It seems like we're caught in a bit of a loop. How can I assist you today, sir?"
-    },
-    {
-      "timestamp": "2025-03-20T17:39:30.789734",
+      "timestamp": "2025-03-29T13:53:26.841285",
       "speaker": "user",
-      "text": "What's up?"
+      "text": "pause music"
     },
     {
-      "timestamp": "2025-03-20T17:39:32.280601",
+      "timestamp": "2025-03-29T13:53:27.460111",
       "speaker": "jarvis",
-      "text": "It seems like we're stuck in a loop here. Is there something specific you need help with, sir?"
+      "text": "Music paused, sir."
     },
     {
-      "timestamp": "2025-03-20T17:39:38.685493",
+      "timestamp": "2025-03-29T13:54:12.098143",
       "speaker": "user",
-      "text": "Hello"
+      "text": "pause music"
     },
     {
-      "timestamp": "2025-03-20T17:39:39.368022",
+      "timestamp": "2025-03-29T13:54:12.936396",
       "speaker": "jarvis",
-      "text": "It seems like we're stuck in a bit of a loop. How can I assist you today, sir?"
+      "text": "Music paused, sir."
     },
     {
-      "timestamp": "2025-03-20T17:43:18.483419",
+      "timestamp": "2025-03-29T13:54:28.970833",
       "speaker": "user",
-      "text": "Hello."
+      "text": "play nobody speak"
     },
     {
-      "timestamp": "2025-03-20T17:43:19.275611",
+      "timestamp": "2025-03-29T13:54:29.484633",
       "speaker": "jarvis",
-      "text": "It seems like we're caught in a loop. How can I assist you today, sir?"
+      "text": "Playing \"Nobody Speak\" now, sir."
     },
     {
-      "timestamp": "2025-03-20T17:43:52.710800",
+      "timestamp": "2025-03-29T13:54:57.857083",
       "speaker": "user",
-      "text": "going."
+      "text": "play music"
     },
     {
-      "timestamp": "2025-03-20T17:43:53.442276",
+      "timestamp": "2025-03-29T13:57:43.316875",
+      "speaker": "user",
+      "text": "play music"
+    },
+    {
+      "timestamp": "2025-03-29T13:57:54.149369",
+      "speaker": "user",
+      "text": "Jarvis play Nobody speak"
+    },
+    {
+      "timestamp": "2025-03-29T13:57:54.869909",
       "speaker": "jarvis",
-      "text": "It seems like we're caught in a loop. How can I assist you today, sir?"
+      "text": "Playing \"Nobody Speak\" by DJ Shadow. Enjoy, sir."
     },
     {
-      "timestamp": "2025-03-20T17:47:31.880159",
+      "timestamp": "2025-03-29T14:02:16.229072",
       "speaker": "user",
-      "text": "For your help, he's been making fun of that, so hopefully some unexpected hours were given to him. C., theamen family met for food, so no exam will be planned publicly to replace the father, or tell him to be able to make our food ready."
+      "text": "play nobody speak"
     },
     {
-      "timestamp": "2025-03-20T17:47:33.325871",
+      "timestamp": "2025-03-29T14:02:17.467690",
       "speaker": "jarvis",
-      "text": "It seems like we're caught in a loop. How can I assist you today, sir?"
+      "text": "Playing \"Nobody Speak\" by DJ Shadow. Enjoy, sir."
     },
     {
-      "timestamp": "2025-03-20T18:05:22.973943",
+      "timestamp": "2025-03-29T14:18:01.472795",
       "speaker": "user",
-      "text": "How's it going?"
+      "text": "play music"
     },
     {
-      "timestamp": "2025-03-20T18:05:23.999396",
+      "timestamp": "2025-03-29T14:18:33.445701",
+      "speaker": "user",
+      "text": "play nobody speak"
+    },
+    {
+      "timestamp": "2025-03-29T14:18:34.682129",
       "speaker": "jarvis",
-      "text": "I'm here and ready to assist you, sir. How can I help you today?"
+      "text": "I cannot play music, sir."
     },
     {
-      "timestamp": "2025-03-20T22:24:45.218196",
+      "timestamp": "2025-03-29T14:36:20.650839",
       "speaker": "user",
-      "text": "Oh, I didn't know any better."
+      "text": "play Nobody speak"
     },
     {
-      "timestamp": "2025-03-20T22:24:46.080239",
+      "timestamp": "2025-03-29T14:36:21.413606",
       "speaker": "jarvis",
-      "text": "It seems like we may have encountered a repetition, sir. Is there anything else I can assist you with today?"
+      "text": "I cannot play music, sir."
     },
     {
-      "timestamp": "2025-03-20T22:24:52.041206",
+      "timestamp": "2025-03-29T15:08:00.218035",
       "speaker": "user",
-      "text": ". ."
+      "text": "play"
     },
     {
-      "timestamp": "2025-03-20T22:24:52.696301",
+      "timestamp": "2025-03-29T15:08:16.801562",
+      "speaker": "user",
+      "text": "Jarvis play Nobody speak"
+    },
+    {
+      "timestamp": "2025-03-29T15:08:47.495145",
+      "speaker": "user",
+      "text": "play Nobody speaks"
+    },
+    {
+      "timestamp": "2025-03-29T15:09:12.619367",
+      "speaker": "user",
+      "text": "play music"
+    },
+    {
+      "timestamp": "2025-03-29T15:27:59.179313",
+      "speaker": "user",
+      "text": "play music"
+    },
+    {
+      "timestamp": "2025-03-29T15:28:12.550382",
+      "speaker": "user",
+      "text": "open spotify"
+    },
+    {
+      "timestamp": "2025-03-29T15:28:32.166396",
+      "speaker": "user",
+      "text": "Jarvis play music"
+    },
+    {
+      "timestamp": "2025-03-29T15:28:53.512586",
+      "speaker": "user",
+      "text": "play music"
+    },
+    {
+      "timestamp": "2025-03-29T15:29:04.415922",
+      "speaker": "user",
+      "text": "next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:29:05.633732",
       "speaker": "jarvis",
-      "text": "It seems like we are at a standstill, sir. If you have any questions or need assistance, feel free to let me know."
+      "text": "Playing next song."
     },
     {
-      "timestamp": "2025-03-20T22:24:58.610950",
+      "timestamp": "2025-03-29T15:29:16.712641",
       "speaker": "user",
-      "text": "Hello."
+      "text": "play next song"
     },
     {
-      "timestamp": "2025-03-20T22:24:59.103332",
+      "timestamp": "2025-03-29T15:29:58.983329",
+      "speaker": "user",
+      "text": "play too sweet"
+    },
+    {
+      "timestamp": "2025-03-29T15:32:48.394408",
+      "speaker": "user",
+      "text": "play nobody speak"
+    },
+    {
+      "timestamp": "2025-03-29T15:36:33.245899",
+      "speaker": "user",
+      "text": "play nobody speak"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:04.731771",
+      "speaker": "user",
+      "text": "play music"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:20.692542",
+      "speaker": "user",
+      "text": "next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:21.349264",
+      "speaker": "jarvis",
+      "text": "Playing next song."
+    },
+    {
+      "timestamp": "2025-03-29T15:37:28.189278",
+      "speaker": "user",
+      "text": "Jarvis"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:28.651399",
+      "speaker": "jarvis",
+      "text": "Yes, sir?"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:33.827361",
+      "speaker": "user",
+      "text": "play next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:39.959799",
+      "speaker": "user",
+      "text": "play next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:44.702697",
+      "speaker": "user",
+      "text": "play next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:50.056807",
+      "speaker": "user",
+      "text": "play next song"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:57.972954",
+      "speaker": "user",
+      "text": "can you hear it"
+    },
+    {
+      "timestamp": "2025-03-29T15:37:58.419228",
+      "speaker": "jarvis",
+      "text": "Yes, sir."
+    },
+    {
+      "timestamp": "2025-03-29T15:38:03.242805",
+      "speaker": "user",
+      "text": "what's playing"
+    },
+    {
+      "timestamp": "2025-04-09T16:40:28.456985",
+      "speaker": "user",
+      "text": "hello Jarvis"
+    },
+    {
+      "timestamp": "2025-04-09T16:40:29.502254",
       "speaker": "jarvis",
       "text": "Hello, sir. How can I assist you today?"
     },
     {
-      "timestamp": "2025-03-20T22:25:05.187397",
+      "timestamp": "2025-04-09T16:40:37.520785",
       "speaker": "user",
-      "text": ". ."
+      "text": "how can I assist you today"
     },
     {
-      "timestamp": "2025-03-20T22:25:05.865670",
+      "timestamp": "2025-04-09T16:40:38.111887",
       "speaker": "jarvis",
-      "text": "It seems like we're in a bit of a silent loop here, sir. If you have any questions or need help, feel free to ask."
+      "text": "I am here to assist you, sir. How can I help?"
     },
     {
-      "timestamp": "2025-03-20T22:25:12.132360",
+      "timestamp": "2025-04-09T16:40:46.703261",
       "speaker": "user",
-      "text": "How's it going?"
+      "text": "how can I help"
     },
     {
-      "timestamp": "2025-03-20T22:25:12.721983",
+      "timestamp": "2025-04-09T16:40:47.316985",
       "speaker": "jarvis",
-      "text": "I'm here and ready to assist you, sir. How can I help you today?"
+      "text": "You can ask me anything, sir. How can I assist?"
     },
     {
-      "timestamp": "2025-03-20T22:25:18.874359",
+      "timestamp": "2025-04-09T16:40:58.018364",
       "speaker": "user",
-      "text": "going."
-    },
-    {
-      "timestamp": "2025-03-20T22:25:19.467327",
-      "speaker": "jarvis",
-      "text": "It seems like we're stuck in a bit of a loop here, sir. If you have any questions or need assistance, please let me know how I can help you."
-    },
-    {
-      "timestamp": "2025-03-20T22:25:25.524761",
-      "speaker": "user",
-      "text": "me with."
-    },
-    {
-      "timestamp": "2025-03-20T22:25:26.150149",
-      "speaker": "jarvis",
-      "text": "It appears we're caught in a loop, sir. Feel free to ask me any questions or let me know how I can assist you with a specific task."
-    },
-    {
-      "timestamp": "2025-03-20T22:25:32.045232",
-      "speaker": "user",
-      "text": ". ."
-    },
-    {
-      "timestamp": "2025-03-20T22:25:32.929939",
-      "speaker": "jarvis",
-      "text": "It seems like we're stuck in a loop, sir. If you have any questions or need assistance, please let me know how I can help you."
-    },
-    {
-      "timestamp": "2025-03-20T22:28:59.107661",
-      "speaker": "user",
-      "text": "hello"
-    },
-    {
-      "timestamp": "2025-03-20T22:28:59.682527",
-      "speaker": "jarvis",
-      "text": "Hello, sir. How can I assist you today?"
-    },
-    {
-      "timestamp": "2025-03-20T22:29:03.819393",
-      "speaker": "user",
-      "text": "."
-    },
-    {
-      "timestamp": "2025-03-20T22:29:04.381242",
-      "speaker": "jarvis",
-      "text": "It seems like we're stuck in a silence loop, sir. If you have any questions or need assistance, please feel free to ask."
-    },
-    {
-      "timestamp": "2025-03-20T22:29:08.117462",
-      "speaker": "user",
-      "text": "Thank you."
-    },
-    {
-      "timestamp": "2025-03-20T22:29:08.668640",
-      "speaker": "jarvis",
-      "text": "You're welcome, sir. If you have any more questions or need help in the future, don't hesitate to ask."
-    },
-    {
-      "timestamp": "2025-03-20T22:31:37.985182",
-      "speaker": "user",
-      "text": "Have a good day."
-    },
-    {
-      "timestamp": "2025-03-20T22:31:38.508936",
-      "speaker": "jarvis",
-      "text": "Thank you, sir. Wishing you a pleasant day ahead as well."
-    },
-    {
-      "timestamp": "2025-03-20T22:31:42.936991",
-      "speaker": "user",
-      "text": "Hello."
-    },
-    {
-      "timestamp": "2025-03-20T22:31:43.405872",
-      "speaker": "jarvis",
-      "text": "Hello, sir. How can I assist you today?"
-    },
-    {
-      "timestamp": "2025-03-20T22:31:47.785395",
-      "speaker": "user",
-      "text": "Thank you."
-    },
-    {
-      "timestamp": "2025-03-20T22:31:48.450832",
-      "speaker": "jarvis",
-      "text": "You're welcome, sir. If you have any more questions or need assistance, feel free to ask."
-    },
-    {
-      "timestamp": "2025-03-20T22:38:20.628618",
-      "speaker": "user",
-      "text": "hello"
-    },
-    {
-      "timestamp": "2025-03-20T22:38:21.891048",
-      "speaker": "jarvis",
-      "text": "Hello again, sir. How can I assist you today?"
-    },
-    {
-      "timestamp": "2025-03-20T22:38:34.094420",
-      "speaker": "user",
-      "text": "what can you help me with"
-    },
-    {
-      "timestamp": "2025-03-20T22:38:34.886655",
-      "speaker": "jarvis",
-      "text": "I can assist you with a wide range of tasks, sir. Whether you need information, reminders, recommendations, or help with tasks, feel free to ask, and I'll do my best to assist you. Just let me know how I can help you today."
-    },
-    {
-      "timestamp": "2025-03-20T22:38:59.320637",
-      "speaker": "user",
-      "text": "open Notepad application"
-    },
-    {
-      "timestamp": "2025-03-20T22:49:51.996031",
-      "speaker": "user",
-      "text": "open Notepad application application"
-    },
-    {
-      "timestamp": "2025-03-20T22:50:30.787306",
-      "speaker": "user",
-      "text": "open tradingview application"
-    },
-    {
-      "timestamp": "2025-03-20T22:51:01.428088",
-      "speaker": "user",
-      "text": "are you still there"
-    },
-    {
-      "timestamp": "2025-03-20T22:51:02.303087",
-      "speaker": "jarvis",
-      "text": "Yes, sir, I'm still here. How can I assist you today?"
+      "text": "open Google Chrome application"
     }
   ],
   "user_preferences": {},

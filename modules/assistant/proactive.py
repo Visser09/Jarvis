@@ -64,3 +64,4 @@ class ProactiveAssistant:
         briefing = "Good morning, sir. Here is your briefing for the day: All systems are operational."
         logger.info("Morning Briefing task executed.")
         return briefing
+
