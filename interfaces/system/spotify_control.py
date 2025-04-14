@@ -22,13 +22,11 @@ class SpotifyControl:
     def _ensure_spotify_running(self):
         """Ensure Spotify is running"""
         try:
-            # Check if Spotify is running
             spotify_hwnd = self._find_spotify_window()
             if not spotify_hwnd:
-                # Start Spotify if not running
                 if os.path.exists(self.spotify_path):
                     subprocess.Popen([self.spotify_path])
-                    time.sleep(5)  # Wait for Spotify to start
+                    time.sleep(5)
                     spotify_hwnd = self._find_spotify_window()
                     if not spotify_hwnd:
                         logger.error("Could not find Spotify window after starting")
@@ -45,16 +43,12 @@ class SpotifyControl:
     def _find_spotify_window(self):
         """Find Spotify window using multiple methods"""
         try:
-            # Try different window class names
             spotify_hwnd = None
             class_names = ["Chrome_WidgetWin_0", "SpotifyMainWindow", "Spotify"]
-            
             for class_name in class_names:
                 spotify_hwnd = win32gui.FindWindow(class_name, None)
                 if spotify_hwnd:
                     break
-            
-            # If still not found, try finding by title
             if not spotify_hwnd:
                 def callback(hwnd, extra):
                     if win32gui.IsWindowVisible(hwnd):
@@ -62,12 +56,10 @@ class SpotifyControl:
                         if "spotify" in title.lower():
                             extra.append(hwnd)
                     return True
-                
                 windows = []
                 win32gui.EnumWindows(callback, windows)
                 if windows:
                     spotify_hwnd = windows[0]
-            
             return spotify_hwnd
         except Exception as e:
             logger.error(f"Error finding Spotify window: {str(e)}")
@@ -76,16 +68,13 @@ class SpotifyControl:
     def _bring_spotify_to_front(self):
         """Bring Spotify window to front"""
         try:
-            # First ensure Spotify is running
             if not self._ensure_spotify_running():
                 return False
-
             spotify_hwnd = self._find_spotify_window()
             if spotify_hwnd:
-                # Bring window to front
                 win32gui.ShowWindow(spotify_hwnd, win32con.SW_RESTORE)
                 win32gui.SetForegroundWindow(spotify_hwnd)
-                time.sleep(1)  # Increased delay to ensure window is ready
+                time.sleep(1)
                 return True
             logger.error("Could not find Spotify window")
             return False
@@ -96,17 +85,12 @@ class SpotifyControl:
     def _send_spotify_command(self, command):
         """Send a command to Spotify"""
         try:
-            # Ensure Spotify is running and in front
             if not self._ensure_spotify_running():
                 return False
-
-            # Bring Spotify to front
             if not self._bring_spotify_to_front():
                 return False
-
-            # Send the command
             pyautogui.press(command)
-            time.sleep(0.5)  # Increased delay between commands
+            time.sleep(0.5)
             return True
         except Exception as e:
             logger.error(f"Error sending Spotify command: {str(e)}")
@@ -151,53 +135,44 @@ class SpotifyControl:
             return False
 
     def set_volume(self, volume_percent):
-        """Set Spotify volume (0-100)"""
+        """Set Spotify volume (0-100) using pycaw."""
         try:
-            volume = max(0, min(100, volume_percent))
-            # Use nircmd to set process volume
-            subprocess.run(['nircmd', 'setprocessvolume', 'spotify.exe', str(volume/100)], 
-                         capture_output=True, text=True)
-            return True
+            from comtypes import CLSCTX_ALL
+            from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
+            sessions = AudioUtilities.GetAllSessions()
+            for session in sessions:
+                if session.Process and session.Process.name().lower() == "spotify.exe":
+                    volume_interface = session._ctl.QueryInterface(ISimpleAudioVolume)
+                    # Convert volume percentage to a float between 0.0 and 1.0
+                    volume_interface.SetMasterVolume(volume_percent / 100.0, None)
+                    return True
+            return False
         except Exception as e:
-            logger.error(f"Error setting volume: {str(e)}")
+            logger.error(f"Error setting volume with pycaw: {e}")
             return False
 
     def search_and_play(self, query):
         """Search for a song and play it"""
         try:
-            # Ensure Spotify is running and in front
             if not self._ensure_spotify_running():
                 return False
-
-            # Bring Spotify to front
             if not self._bring_spotify_to_front():
                 return False
-
-            # Open search
             pyautogui.hotkey('ctrl', 'l')
-            time.sleep(1.5)  # Increased delay
-            
-            # Clear any existing text
+            time.sleep(1.5)
             pyautogui.hotkey('ctrl', 'a')
             pyautogui.press('backspace')
             time.sleep(0.5)
-            
-            # Type search query
             pyautogui.write(query)
-            time.sleep(2)  # Wait for search results
-            
-            # Press enter to search
+            time.sleep(2)
             pyautogui.press('enter')
-            time.sleep(3)  # Wait for results to load
-            
-            # Move to first result and play
-            pyautogui.press('tab')  # Move to first result
+            time.sleep(3)
+            pyautogui.press('tab')
             time.sleep(0.5)
-            pyautogui.press('enter')  # Play the song
+            pyautogui.press('enter')
             time.sleep(1)
-            
             self.is_playing = True
             return True
         except Exception as e:
             logger.error(f"Error searching and playing: {str(e)}")
-            return False 
+            return False
